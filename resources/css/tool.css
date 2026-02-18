@@ -1,1 +1,4 @@
-/* Nova Tool CSS */
+/* Nova Toolbar Actions */
+.toolbar-button {
+    white-space: nowrap;
+}

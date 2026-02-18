@@ -1,6 +1,6 @@
 {
-    "name": ":vendor/:package_name",
-    "description": ":package_description",
+    "name": "opscale-co/nova-toolbar-actions",
+    "description": "Show Nova actions directly in the toolbar",
     "keywords": [
         "laravel",
         "nova",
@@ -14,33 +14,35 @@
             "url": "https://nova.laravel.com"
         }
     ],
-    "homepage": "https://github.com/:vendor/:package_name",
+    "homepage": "https://github.com/opscale-co/nova-toolbar-actions",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "Opscale",
+            "email": "development@opscale.co",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": ">=8.2",
-        "ext-readline": "*"
+        "php": ">=8.2"
     },
     "autoload": {
         "psr-4": {
-            ":namespace_vendor\\:namespace_tool_name\\": "src/"
+            "Opscale\\NovaToolbarActions\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            ":namespace_vendor\\:namespace_tool_name\\Tests\\": "tests"
+            "Opscale\\NovaToolbarActions\\Tests\\": "tests",
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                ":namespace_vendor\\:namespace_tool_name\\ToolServiceProvider"
+                "Opscale\\NovaToolbarActions\\ToolServiceProvider"
             ]
         }
     },
@@ -55,9 +57,17 @@
         "phpunit/phpunit": "^10.5",
         "tightenco/duster": "^2.7"
     },
-    "script" : {
+    "scripts": {
         "post-autoload-dump": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        "@clear",
+        "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+        "Composer\\Config::disableProcessTimeout",
+        "@php vendor/bin/testbench serve --ansi"
         ]
     }
 }
