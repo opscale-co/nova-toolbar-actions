@@ -4,10 +4,11 @@ namespace Opscale\NovaToolbarActions\Tests;
 
 use Laravel\Nova\Actions\Action;
 use Opscale\NovaToolbarActions\ShowAsButton;
+use PHPUnit\Framework\Attributes\Test;
 
 class ShowAsButtonTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_set_show_as_button_meta()
     {
         $action = new class extends Action
@@ -20,7 +21,7 @@ class ShowAsButtonTest extends TestCase
         $this->assertTrue($action->meta['showAsButton']);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_disable_show_as_button()
     {
         $action = new class extends Action
@@ -33,7 +34,7 @@ class ShowAsButtonTest extends TestCase
         $this->assertFalse($action->meta['showAsButton']);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_show_on_index_toolbar()
     {
         $action = new class extends Action
@@ -46,7 +47,7 @@ class ShowAsButtonTest extends TestCase
         $this->assertTrue($action->meta['showOnIndexToolbar']);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_show_on_detail_toolbar()
     {
         $action = new class extends Action
@@ -59,7 +60,7 @@ class ShowAsButtonTest extends TestCase
         $this->assertTrue($action->meta['showOnDetailToolbar']);
     }
 
-    /** @test */
+    #[Test]
     public function it_returns_the_action_instance_for_chaining()
     {
         $action = new class extends Action
